@@ -25,12 +25,12 @@ int main(void)
 
 	printf("vector x is:\n");
 	for (int i = 0; i < N; ++i)
-		printf("%2.0f", x[i]);
+		printf("%4.0f", x[i]);
 	printf("\n");
 
 	printf("vector y is:\n");
 	for (int i = 0; i < N; ++i)
-		printf("%2.0f", y[i]);
+		printf("%4.0f", y[i]);
 	printf("\n");
 
 	//device code
@@ -42,7 +42,7 @@ int main(void)
 
 	status = cublasCreate(&handle);
 	status = cublasSetVector(N, sizeof(*x), x, 1, dx, 1);
-	status = cublasSetVector(N, sizeof(*y), x, 1, dy, 1);
+	status = cublasSetVector(N, sizeof(*y), y, 1, dy, 1);
 	float alpha = 2.0;
 
 	//compute 
@@ -52,7 +52,7 @@ int main(void)
 	printf("compute result\n");
 
 	for (int i = 0; i < N; ++i)
-		printf("%2.0f", y[i]);
+		printf("%4.0f", y[i]);
 	printf("\n");
 
 	//free device memory
